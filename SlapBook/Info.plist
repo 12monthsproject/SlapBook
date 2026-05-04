@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- App 基本信息 -->
+    <key>CFBundleDisplayName</key>
+    <string>SlapBook</string>
+    
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    
+    <key>CFBundleIdentifier</key>
+    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    
+    <key>CFBundleName</key>
+    <string>$(PRODUCT_NAME)</string>
+    
+    <key>CFBundlePackageType</key>
+    <string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
+    
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string>
+    
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    
+    <!-- macOS 版本要求 -->
+    <key>LSMinimumSystemVersion</key>
+    <string>$(MACOSX_DEPLOYMENT_TARGET)</string>
+    
+    <!-- 隐藏 Dock 图标（纯菜单栏 App） -->
+    <key>LSUIElement</key>
+    <true/>
+    
+    <!-- 主菜单 nib（不需要，用代码实现） -->
+    <key>NSMainStoryboardFile</key>
+    <string></string>
+    
+    <!-- 应用类别（App Store 分类） -->
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.utilities</string>
+    
+    <!-- 隐私说明（App Store 审核必需） -->
+    <key>NSMotionUsageDescription</key>
+    <string>SlapBook needs access to motion sensors to detect when you slap your MacBook and play a sound response.</string>
+    
+    <!-- 高分辨率支持 -->
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    
+    <!-- 人类可读版权 -->
+    <key>NSHumanReadableCopyright</key>
+    <string>Copyright © 2026 SlapBook. All rights reserved.</string>
+    
+    <!-- App Store 相关 -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <false/>
+    </dict>
+</dict>
+</plist>

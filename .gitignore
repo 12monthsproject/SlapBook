@@ -1,0 +1,47 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Xcode
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+xcuserdata/
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Build products
+build/
+SlapBookStatusBar.app/
+SlapBookMenuBar
+*.dmg
+*.app
+
+# Swift Package Manager
+.build/
+Packages/
+*.xcodeproj/plugin/
+*.xcodeproj/xcshareddata/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# Misc
+*.log
+*.tmp
+*.swp
+*.swo
+*~
+
+# Audio generated files (keep Sounds/ directory but not build outputs)
+# Sounds/ directory is committed (user puts their own mp3s here)
+
+# GitHub releases artifacts (we push via gh release later)
+releases/

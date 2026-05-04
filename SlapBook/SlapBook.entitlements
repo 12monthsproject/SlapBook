@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+SlapBook.entitlements
+App Sandbox 配置（App Store 上架必需开启沙盒）
+注意：CoreMotion 加速度计在 macOS 上不需要特殊 entitlement
+-->
+<plist version="1.0">
+<dict>
+    <!-- 启用 App Sandbox（App Store 必须） -->
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+    
+    <!-- 允许播放音频 -->
+    <key>com.apple.security.device.audio-input</key>
+    <false/>
+    
+    <!-- 允许应用在用户数据目录写入偏好设置 -->
+    <key>com.apple.security.files.user-selected.read-only</key>
+    <false/>
+</dict>
+</plist>
