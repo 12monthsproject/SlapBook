@@ -19,7 +19,7 @@ SOUNDS_DIR = APP_DIR / "Resources"
 
 # 音效包配置
 SOUND_PACKS = {
-    "female": {
+    "sexy": {
         "name": "女声 💋",
         "light":  [f"sexy_{i:02d}.mp3" for i in range(0, 14)],
         "medium": [f"sexy_{i:02d}.mp3" for i in range(14, 28)],
@@ -35,7 +35,7 @@ SOUND_PACKS = {
 }
 
 # 全局状态
-current_pack = "female"
+current_pack = "sexy"
 last_trigger = 0
 min_interval = 0.3
 running = True
@@ -141,7 +141,7 @@ def create_menu_bar():
             self.imu_thread.start()
         
         def set_female(self, _):
-            set_sound_pack("female")
+            set_sound_pack("sexy")
             self.current_item.title = "当前声音: 女声 💋"
         
         def set_male(self, _):

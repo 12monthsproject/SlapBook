@@ -224,7 +224,7 @@ class SlapBookApp(rumps.App):
         save_pack(pack_key)
         global current_pack
         current_pack = pack_key
-        self.title = pack_name(pack_key)[0]  # 取第一个 emoji 作为图标
+        self.title = pack_name(pack_key).split()[0]  # 取名字第一个 token（emoji），避免国旗 emoji 被截半
         self.update_menu()
         rumps.notification("SlapBook", "已切换", pack_name(pack_key))
     

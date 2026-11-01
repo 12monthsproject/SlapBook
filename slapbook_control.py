@@ -63,7 +63,7 @@ def stop():
 
 def set_female():
     """切换到女声"""
-    CONFIG_FILE.write_text("female")
+    CONFIG_FILE.write_text("sexy")
     show_notification("SlapBook", "已切换到女声 💋")
 
 

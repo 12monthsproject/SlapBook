@@ -24,9 +24,11 @@ class SlapDetector {
     var minimumInterval: TimeInterval = 0.5
     
     /// 各强度阈值（单位：g）
-    var lightThreshold: Double  = 0.3
-    var mediumThreshold: Double = 0.8
-    var hardThreshold: Double   = 1.5
+    /// 实际取值来自灵敏度设置（见 UserPreferences.applySensitivity 写入的 static 覆盖值），
+    /// 否则调灵敏度只改 static、这里读实例值，菜单点了等于没点。
+    var lightThreshold: Double  { SlapDetector.lightThresholdOverride }
+    var mediumThreshold: Double { SlapDetector.mediumThresholdOverride }
+    var hardThreshold: Double   { SlapDetector.hardThresholdOverride }
     
     /// 事件回调
     var onSlap: SlapHandler?
@@ -94,7 +96,7 @@ class SlapDetector {
         // 根据逆向工程，Apple 内置加速度计的 VID 通常是 0x05AC (Apple Inc.)
         let matching: [String: Any] = [
             kIOHIDDeviceUsagePageKey: kHIDPage_Sensor,
-            kIOHIDDeviceUsageKey: kHIDUsage_Snsr_Accelerometer3D
+            kIOHIDDeviceUsageKey: kHIDUsage_Snsr_Motion_Accelerometer3D
         ]
         
         IOHIDManagerSetDeviceMatching(manager, matching as CFDictionary)
@@ -137,8 +139,9 @@ class SlapDetector {
             }
         }
         
-        // 如果没有找到特定设备，返回第一个 Apple HID 设备
-        return devices.first
+        // 找不到明确的传感器设备就返回 nil —— 不能退回「第一个 Apple HID 设备」，
+        // 那可能是键盘/触控板，会把非加速度计数据当成拍打一直触发。
+        return nil
     }
     
     // MARK: - Processing
@@ -151,7 +154,7 @@ class SlapDetector {
         // 只处理加速度计数据
         guard usagePage == kHIDPage_Sensor || usagePage == kHIDPage_GenericDesktop else { return }
         
-        let rawValue = IOHIDValueGetScaledValue(value, kIOHIDValueScaleTypeCalibrated)
+        let rawValue = IOHIDValueGetScaledValue(value, IOHIDValueScaleType(kIOHIDValueScaleTypeCalibrated))
         
         // 根据 usage 判断是哪个轴
         var axisValue = Double(rawValue)
@@ -184,9 +187,11 @@ class SlapDetector {
 }
 
 // MARK: - Threshold Overrides
+// 唯一声明处（UserPreferences.swift 里曾重复声明，导致整个包编译失败）。
+// 默认值对应「中等灵敏度」，由 UserPreferences.applySensitivity() 覆写。
 
 extension SlapDetector {
-    static var lightThresholdOverride: Double  = 0.3
-    static var mediumThresholdOverride: Double = 0.8
-    static var hardThresholdOverride: Double   = 1.5
+    static var lightThresholdOverride: Double  = 0.8
+    static var mediumThresholdOverride: Double = 1.5
+    static var hardThresholdOverride: Double   = 2.5
 }

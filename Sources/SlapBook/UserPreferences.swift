@@ -79,9 +79,5 @@ class UserPreferences: ObservableObject {
     }
 }
 
-// 用 static 属性传递阈值覆盖（简化跨对象通信）
-extension SlapDetector {
-    static var lightThresholdOverride: Double  = 0.8
-    static var mediumThresholdOverride: Double = 1.5
-    static var hardThresholdOverride: Double   = 2.5
-}
+// 说明：阈值 static 属性统一在 SlapDetector.swift 的 extension 里声明。
+// 这里曾重复声明一份（Swift 不允许，整个包编译失败），已移除。

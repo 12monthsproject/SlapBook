@@ -1,5 +1,6 @@
 import Foundation
 import AVFoundation
+import AppKit   // NSSound 在 AppKit 里，缺这行编译不过
 
 // MARK: - Models
 

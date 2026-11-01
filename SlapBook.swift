@@ -1,5 +1,7 @@
 import Cocoa
 
+// ⚠️ 历史版本，未被 build_app.sh 使用；实际构建入口是 SlapBookMenuBar.swift。
+// 保留仅作参考，勿与 SlapBookMenuBar.swift 同时编译（AppDelegate 同名冲突）。
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem!
     var process: Process?

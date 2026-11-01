@@ -22,7 +22,7 @@ QUIT_FILE = Path("/tmp/slapbook_quit")
 
 # 音效包配置
 SOUND_PACKS = {
-    "female": {
+    "sexy": {
         "light":  [f"sexy_{i:02d}.mp3" for i in range(0, 14)],
         "medium": [f"sexy_{i:02d}.mp3" for i in range(14, 28)],
         "hard":   [f"sexy_{i:02d}.mp3" for i in range(28, 42)],
@@ -36,7 +36,7 @@ SOUND_PACKS = {
 }
 
 # 全局状态
-current_pack = "female"
+current_pack = "sexy"
 last_trigger = 0
 min_interval = 0.3
 running = True

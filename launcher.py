@@ -126,13 +126,8 @@ def main():
             show_notification("SlapBook", "密码错误，启动失败")
             return
         
-        # 密码正确，启动主程序
-        subprocess.Popen(
-            ['sudo', str(python_bin), str(script_path)],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-            start_new_session=True
-        )
+        # 密码正确，启动主程序（必须再次喂密码，否则 sudo 在无 tty 时会阻塞）
+        run_with_password(password, str(script_path), str(python_bin))
         
         show_notification("SlapBook", "应用已启动！拍打你的 MacBook 吧 💋")
         
